@@ -1,4 +1,5 @@
 using FilterDemo.API.Filters;
+using FilterDemo.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilterDemo.API.Controllers;
@@ -20,7 +21,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    [CtmActionFilter]
+    // [CtmActionFilter]
     [CtmAuthorizationFilter]
     [CtmResourceFilter]
     public IEnumerable<WeatherForecast> Get(int userId, string username)
@@ -32,5 +33,14 @@ public class WeatherForecastController : ControllerBase
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+    }
+
+    [HttpPost]
+    // [CtmActionFilter(_logger)]
+    [TypeFilter(typeof(CtmActionFilterAttribute))] // 1.
+    [ServiceFilter(typeof(CtmActionFilterAttribute))]  // 2. Need to register the filter in advance in Program.cs
+    public User AddUser(User user)
+    {
+        return user;
     }
 }
