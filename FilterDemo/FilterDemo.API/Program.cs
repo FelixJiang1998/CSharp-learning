@@ -1,4 +1,5 @@
 using FilterDemo.API.Filters;
+using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,12 @@ builder.Services.AddControllers(o =>
 {
     // We can still manually specify the priority of every filter. 1 is the highest
     o.Filters.Add<CtmActionFilterAttribute>();
-    
 });
+
+// 注册缓存, 应使用单例确保数据共享
+builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

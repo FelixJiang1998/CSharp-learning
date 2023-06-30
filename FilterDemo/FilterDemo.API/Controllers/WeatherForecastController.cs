@@ -23,7 +23,8 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     // [CtmActionFilter]
     [CtmAuthorizationFilter]
-    [CtmResourceFilter]
+    // [CtmResourceFilter]
+    [TypeFilter(typeof(CtmResourceFilterAttribute))]
     public IEnumerable<WeatherForecast> Get(int userId, string username)
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
