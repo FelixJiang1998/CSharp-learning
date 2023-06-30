@@ -37,8 +37,10 @@ public class WeatherForecastController : ControllerBase
 
     [HttpPost]
     // [CtmActionFilter(_logger)]
-    [TypeFilter(typeof(CtmActionFilterAttribute))] // 1.
-    [ServiceFilter(typeof(CtmActionFilterAttribute))]  // 2. Need to register the filter in advance in Program.cs
+    // [TypeFilter(typeof(CtmActionFilterAttribute))] // Way 1.
+    // Way 2. Need to register the filter in advance in Program.cs
+    // 如果使用了ServiceFilter, 那么无论是filter本身还是filter需要注入的参数, 都需要·提前·在容器中注册
+    [ServiceFilter(typeof(CtmActionFilterAttribute))]
     public User AddUser(User user)
     {
         return user;
