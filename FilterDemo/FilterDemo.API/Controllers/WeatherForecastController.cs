@@ -25,8 +25,10 @@ public class WeatherForecastController : ControllerBase
     [CtmAuthorizationFilter]
     // [CtmResourceFilter]
     [TypeFilter(typeof(CtmResourceFilterAttribute))]
+    [TypeFilter(typeof(CtmExceptionFilterAttribute))]
     public IEnumerable<WeatherForecast> Get(int userId, string username)
     {
+        throw new Exception("Exception");
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
