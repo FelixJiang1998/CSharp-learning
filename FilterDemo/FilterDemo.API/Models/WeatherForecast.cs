@@ -1,4 +1,4 @@
-namespace FilterDemo.API;
+namespace FilterDemo.API.Models;
 
 public class WeatherForecast
 {
