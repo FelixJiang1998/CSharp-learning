@@ -26,6 +26,7 @@ public class WeatherForecastController : ControllerBase
     // [CtmResourceFilter]
     [TypeFilter(typeof(CtmResourceFilterAttribute))]
     [TypeFilter(typeof(CtmExceptionFilterAttribute))]
+    [CtmResultFilter][CtmAlwaysRunResultFilter]
     public IEnumerable<WeatherForecast> Get(int userId, string username)
     {
         throw new Exception("Exception");
