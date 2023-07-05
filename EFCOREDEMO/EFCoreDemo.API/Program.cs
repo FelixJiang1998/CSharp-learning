@@ -1,4 +1,5 @@
 using EFCoreDemo.API.Entities;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,13 +14,25 @@ builder.Services.AddSwaggerGen();
 // Singleton trap: can result in service's breaking down
 // 1. if not released, context as singleton can only track one entity with the same ID 
 // 2. cannot handle multiple visit of different methods at the same time
-builder.Services.AddSingleton<JobRecruitmentContext>();
+// builder.Services.AddScoped<JobRecruitmentContext>();
+
+// builder.Services.AddDbContext<JobRecruitmentContext>();
+
+// Normal way to get configuration
+var configuration = builder.Configuration;
+builder.Services.AddDbContext<JobRecruitmentContext>(option =>
+{
+    // option.UseSqlServer(configuration.GetConnectionString("UseMySql"));
+    // option.UseMySql(ServerVersion.AutoDetect("server=127.0.0.1;database=JobRecruitment;user=root;pwd=123456"));
+    option.UseMySql(ServerVersion.AutoDetect(configuration.GetConnectionString("UseMySql")));
+});
 
 builder.Services.AddCors(c => c.AddPolicy("any",
         p =>
             p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
     )
 );
+
 
 var app = builder.Build();
 

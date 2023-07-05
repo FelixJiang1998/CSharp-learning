@@ -28,8 +28,6 @@ public partial class JobRecruitmentContext : DbContext
         {
             string conn = "server=127.0.0.1;database=JobRecruitment;user=root;pwd=123456";
             optionsBuilder.UseMySql(ServerVersion.AutoDetect(conn));
-            
-            
         }
     }
 }
