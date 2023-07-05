@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PdEhU9YCppAgWv0czqcT3Bi6xxiW+jVTiNvwsdFXzOSwke5qBXn01CvWmTb0Wr5vTQGUPYgSMC67phXz7U04ug==",
+  "dgSpecHash": "+lVwckyCqhpyZn5acVSlmyasdUTOBktDOgIjyn6ua2j+nm7jRB84wzvRGwsUzi1M5ELzpc0J08HalxsEShfoVw==",
   "success": true,
   "projectFilePath": "/Users/felixj/Code/C#/EFCOREDEMO/EFCoreDemo.API/EFCoreDemo.API.csproj",
   "expectedPackageFiles": [
@@ -50,8 +50,6 @@
     "/Users/felixj/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/felixj/.nuget/packages/mysql.data/8.0.33/mysql.data.8.0.33.nupkg.sha512",
     "/Users/felixj/.nuget/packages/mysql.entityframeworkcore/7.0.2/mysql.entityframeworkcore.7.0.2.nupkg.sha512",
-    "/Users/felixj/.nuget/packages/mysqlconnector/2.2.5/mysqlconnector.2.2.5.nupkg.sha512",
-    "/Users/felixj/.nuget/packages/pomelo.entityframeworkcore.mysql/7.0.0/pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "/Users/felixj/.nuget/packages/portable.bouncycastle/1.9.0/portable.bouncycastle.1.9.0.nupkg.sha512",
     "/Users/felixj/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/Users/felixj/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",

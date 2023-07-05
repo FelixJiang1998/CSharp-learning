@@ -16,7 +16,8 @@ builder.Services.AddSwaggerGen();
 // 2. cannot handle multiple visit of different methods at the same time
 // builder.Services.AddScoped<JobRecruitmentContext>();
 
-// builder.Services.AddDbContext<JobRecruitmentContext>();
+// Scoped by default
+// builder.Services.AddDbContext<JobRecruitmentContext>();  
 
 // Normal way to get configuration
 var configuration = builder.Configuration;
@@ -24,7 +25,10 @@ builder.Services.AddDbContext<JobRecruitmentContext>(option =>
 {
     // option.UseSqlServer(configuration.GetConnectionString("UseMySql"));
     // option.UseMySql(ServerVersion.AutoDetect("server=127.0.0.1;database=JobRecruitment;user=root;pwd=123456"));
-    option.UseMySql(ServerVersion.AutoDetect(configuration.GetConnectionString("UseMySql")));
+    option.UseMySQL(configuration.GetConnectionString("UseMySql")!);
+
+    // No tracking globally
+    option.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
 builder.Services.AddCors(c => c.AddPolicy("any",
