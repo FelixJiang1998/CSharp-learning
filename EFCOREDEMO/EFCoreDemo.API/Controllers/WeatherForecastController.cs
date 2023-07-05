@@ -1,9 +1,11 @@
 using EFCoreDemo.API.Entities;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreDemo.API.Controllers;
 
+[EnableCors("any")]
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -27,8 +29,8 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public Job Get()
+    [HttpGet("Get1")]
+    public Job Get1()
     {
         // Get Data
         // using JobRecruitmentContext context = new JobRecruitmentContext();
@@ -51,5 +53,14 @@ public class WeatherForecastController : ControllerBase
 
         context.SaveChanges();
         return job;
+    }
+
+    [HttpGet("Get2")]
+    public City Get2()
+    {
+        Context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+
+        var city = Context.Cities.FirstOrDefault(m => m.Id == 1);
+        return city;
     }
 }

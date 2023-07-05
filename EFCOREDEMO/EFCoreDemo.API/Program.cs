@@ -11,8 +11,15 @@ builder.Services.AddSwaggerGen();
 
 // WARNING: should use Scoped!!
 // Singleton trap: can result in service's breaking down
-// 
+// 1. if not released, context as singleton can only track one entity with the same ID 
+// 2. cannot handle multiple visit of different methods at the same time
 builder.Services.AddSingleton<JobRecruitmentContext>();
+
+builder.Services.AddCors(c => c.AddPolicy("any",
+        p =>
+            p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+    )
+);
 
 var app = builder.Build();
 
@@ -23,6 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
